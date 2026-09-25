@@ -1,7 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: './tests',
+  // 1. แก้ไข testDir ให้ตรงกับโฟลเดอร์จริงของคุณ (tests/system)
+  testDir: './tests/system',
 
   use: {
     baseURL: 'https://www.saucedemo.com',
@@ -9,6 +10,11 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
+
+  // 2. ตั้งค่า Reporter
+  reporter: [
+    ['html', { outputFolder: 'playwright-report', open: 'never' }]
+  ],
 
   projects: [
     {
